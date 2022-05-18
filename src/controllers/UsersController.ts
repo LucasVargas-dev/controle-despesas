@@ -21,6 +21,7 @@ export default class UsersController {
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
+    console.log("Opa");
     const { name, email, cpf, password } = request.body;
     const { id } = request.params;
 

@@ -20,6 +20,7 @@ export default class UpdateUserService {
     cpf,
     password,
   }: User): Promise<void> {
+    console.log("Update");
     const userExists = await this.usersRepository.findById(id);
 
     if (!userExists) {

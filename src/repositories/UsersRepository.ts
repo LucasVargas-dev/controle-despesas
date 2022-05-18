@@ -12,8 +12,6 @@ export default class UsersRepository {
   }
 
   public async create(userData: Omit<User, 'id'>): Promise<User> {  
-    console.log("Opa");
-    
     const user = this.ormRepository.create(userData);
     await this.ormRepository.save(user);
 

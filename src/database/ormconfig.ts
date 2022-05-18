@@ -9,8 +9,9 @@ const AppDataSource = new DataSource({
   password: 'postgres',
   database: 'controle_despesas',
   entities: ['src/entities/*.ts'],
-  migrations: ['src/database/migrations/*.ts'],
-  migrationsTableName: 'migrations',
+  // migrations: ['src/database/migrations/*.ts'],
+  // migrationsTableName: 'migrations',
+  synchronize: true,
 });
 
 export const initializeDataSource = () => {
