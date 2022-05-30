@@ -13,7 +13,7 @@ const HomePage = () => {
   const { mutateAsync: deleteTransaction } = useDeleteTransaction();
 
   const handleAddTransaction = () => {
-    navigate('/add-transaction');
+    navigate('/transaction');
   };
 
   const handleDeleteTransaction = async (id: number) => {
@@ -77,7 +77,7 @@ const HomePage = () => {
               </Typography> 
             </Stack>
             <Typography variant="h2"> 
-                {}
+                
             </Typography> 
           </Stack>
         </Card>

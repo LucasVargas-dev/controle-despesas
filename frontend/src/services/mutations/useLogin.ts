@@ -5,7 +5,6 @@ import { User } from '../../models/User';
 import api from '../api';
 
 type SessionValues = {
-  // token: string;
   user: User;
 };
 

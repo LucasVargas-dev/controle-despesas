@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 
 import { User } from '../../models/User';
-// import api from '../../services/api';
 import { useLogin } from '../../services/mutations';
 import { AuthContext, SignInCredentials } from './AuthContext';
 
@@ -10,19 +9,16 @@ type AuthProviderProps = {
 };
 
 interface AuthState {
-  // token: string;
   user: User;
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [data, setData] = useState<AuthState>(() => {
-    // const token = localStorage.getItem('@MoneySolutions:token');
     const user = localStorage.getItem('@ControleDespesas:user');
     
-    if (user) { //token && user
-      // api.defaults.headers.common.Authorization = `Bearer ${token}`;
+    if (user) {
 
-      return { user: JSON.parse(user) }; //token, 
+      return { user: JSON.parse(user) };
     }
 
     return {} as AuthState;
@@ -32,23 +28,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signIn = useCallback(
     async ({ email, password }: SignInCredentials) => {
-      const { user } = await loginMutation.mutateAsync({ //token, 
+      const { user } = await loginMutation.mutateAsync({ 
         email,
         password,
       });
 
-      // localStorage.setItem('@MoneySolutions:token', token);
       localStorage.setItem('@ControleDespesas:user', JSON.stringify(user));
 
-      // api.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-      setData({ user }); //token,
+      setData({ user }); 
     },
     [loginMutation],
   );
 
   const signOut = useCallback(() => {
-    // localStorage.removeItem('@MoneySolutions:token');
     localStorage.removeItem('user');
 
     setData({} as AuthState);

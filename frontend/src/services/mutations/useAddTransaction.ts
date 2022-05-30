@@ -1,22 +1,27 @@
 import { useMutation } from 'react-query';
 
 import { Transaction } from '../../models/Transaction';
+import { useAuth } from '../../store/Auth';
 import api from '../api';
 
 export const useAddTransaction = () => {
+  const { user } = useAuth();
+  const user_id = user.id;
+  
   return useMutation(
     ({
       amount,
-      category,
+      description,
       title,
       type,
     }: Omit<Transaction, 'id' | 'created_at'>) =>
       api
-        .post<Transaction>('/transactions/create', {
+        .post<Transaction>('/create-transaction', {
           amount,
-          category,
+          description,
           title,
           type,
+          user_id,
         })
         .then(response => response.data),
     {

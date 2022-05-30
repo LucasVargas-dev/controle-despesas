@@ -12,12 +12,12 @@ import {
 } from '@mui/material';
 
 import { MainContainer } from '../../components/MainContainer';
-//import { TransactionType } from '../../models/Transaction';
+import { TransactionType } from '../../models/Transaction';
 import { useAddTransaction } from '../../services/mutations';
 
 const AddTransactionPage = () => {
   const titleInput = useRef(null) as RefObject<HTMLInputElement>;
-  const categoryInput = useRef(null) as RefObject<HTMLInputElement>;
+  const descriptionInput = useRef(null) as RefObject<HTMLInputElement>;
   const amountInput = useRef(null) as RefObject<HTMLInputElement>;
 
   const [transactionType, setTransactionType] = useState(
@@ -51,15 +51,12 @@ const AddTransactionPage = () => {
       type: transactionType,
     });
 
-    navigate('/');
+    navigate('/home');
   };
 
   return (
     <MainContainer>
       <Typography variant="h2">Adicionar transação</Typography>
-      <Typography variant="subtitle1">
-        Adicione uma transação de entrada ou saída
-      </Typography>
 
       <form onSubmit={handleAddTransaction}>
         <TextField
@@ -73,7 +70,7 @@ const AddTransactionPage = () => {
         />
 
         <TextField
-          label="Categoria"
+          label="Descrição"
           sx={{ background: '#fff' }}
           size="small"
           margin="dense"
@@ -89,12 +86,12 @@ const AddTransactionPage = () => {
             onChange={handleChangeTransactionType}
           >
             <FormControlLabel
-              value="income"
+              value="entrada"
               control={<Radio />}
               label="Entrada"
             />
             <FormControlLabel
-              value="outcome"
+              value="saida"
               control={<Radio />}
               label="Saída"
             />
