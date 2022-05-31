@@ -1,13 +1,11 @@
 import Transaction from '../entities/Transaction';
-import TransactionRepository from '../repositories/TransactionRepository';
+import ITransactionRepository from '../repositories/interfaces/ITransactionsRepository';
 import { ICreateTransaction } from '../dtos/ICreateTransaction';
 
 export default class CreateTransactionService {
-  private transactionsRepository: TransactionRepository;
+  // private transactionsRepository: TransactionRepository;
 
-  constructor() {
-      this.transactionsRepository = new TransactionRepository();
-    }
+  constructor(private transactionsRepository: ITransactionRepository) {}
 
   public async execute({
     title,
