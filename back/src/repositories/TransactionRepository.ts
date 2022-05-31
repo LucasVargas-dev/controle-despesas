@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 
 import AppDataSource from '../database/ormconfig';
-import { ICreateTransactionDTO } from '../dtos/ICreateTransactionDTO';
+import { ICreateTransaction } from '../dtos/ICreateTransaction';
 // import ITransactionsRepository from '@modules/transactions/repositories/ITransactionsRepository';
 import Transaction from '../entities/Transaction';
 
@@ -12,7 +12,7 @@ export default class TransactionsRepository {
     this.ormRepository = AppDataSource.getRepository(Transaction);
   }
 
-  public async create(transactionData: ICreateTransactionDTO): Promise<Transaction> {
+  public async create(transactionData: ICreateTransaction): Promise<Transaction> {
     const transaction = this.ormRepository.create(transactionData);
     await this.ormRepository.save(transaction);
 

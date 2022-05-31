@@ -1,6 +1,6 @@
-import Transaction, { TransactionType } from '../entities/Transaction';
+import Transaction from '../entities/Transaction';
 import TransactionRepository from '../repositories/TransactionRepository';
-import { ICreateTransactionDTO } from '../dtos/ICreateTransactionDTO';
+import { ICreateTransaction } from '../dtos/ICreateTransaction';
 
 export default class CreateTransactionService {
   private transactionsRepository: TransactionRepository;
@@ -15,7 +15,7 @@ export default class CreateTransactionService {
     amount,
     type,
     user_id,
-  }: ICreateTransactionDTO): Promise<Transaction> {
+  }: ICreateTransaction): Promise<Transaction> {
     return this.transactionsRepository.create({
         title,
         description,

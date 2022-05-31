@@ -1,7 +1,4 @@
-// import { sign } from 'jsonwebtoken';
-
 import AppError from '../errors/AppError';
-// import { authConfig } from '@config/auth';
 import User from '../entities/User';
 import BCryptHashProvider from '../helpers/BCryptHashProvider';
 import UsersRepository from '../repositories/UsersRepository';
@@ -40,13 +37,6 @@ export default class LoginService {
     if (!passwordMatched) {
       throw new AppError('E-mail e senha não conferem');
     }
-
-    // const { expiresIn, secret } = authConfig.jwt;
-
-    // const token = sign({}, secret, {
-    //   subject: user.id.toString(),
-    //   expiresIn,
-    // });
 
     return {
       user

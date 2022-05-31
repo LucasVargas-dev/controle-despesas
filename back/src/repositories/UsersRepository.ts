@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 
 import AppDataSource from '../database/ormconfig';
-import { IUpdateUserDTO } from '../dtos/IUpdateUserDTO';
+import { IUpdateUser } from '../dtos/IUpdateUser';
 import User from '../entities/User';
 
 export default class UsersRepository {
@@ -11,14 +11,14 @@ export default class UsersRepository {
     this.ormRepository = AppDataSource.getRepository(User);
   }
 
-  public async create(userData: Omit<User, 'id'>): Promise<User> {  
+  public async create(userData: Omit<User, 'id'>): Promise<User> {
     const user = this.ormRepository.create(userData);
     await this.ormRepository.save(user);
 
     return user;
   }
 
-  public async update({ id, userData }: IUpdateUserDTO): Promise<void> {
+  public async update({ id, userData }: IUpdateUser): Promise<void> {
     await this.ormRepository.update({ id }, userData);
   }
 

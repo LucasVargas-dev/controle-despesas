@@ -7,11 +7,11 @@ export default class LoginController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { email, password } = request.body;
 
-    const { user } = await new LoginService().execute({ //token, 
+    const { user } = await new LoginService().execute({
       email,
       password,
     });
 
-    return response.json({ user: instanceToPlain(user) }); //token 
-  } 
+    return response.json({ user: instanceToPlain(user) });
+  }
 }
