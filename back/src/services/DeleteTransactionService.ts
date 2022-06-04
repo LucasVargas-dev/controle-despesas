@@ -1,16 +1,17 @@
 import AppError from '../errors/AppError';
-import ITransactionsRepository from '../repositories/interfaces/ITransactionsRepository';
-// import TransactionRepository from '../repositories/TransactionRepository';
+// import ITransactionsRepository from '../repositories/interfaces/ITransactionsRepository';
+import TransactionRepository from '../repositories/TransactionRepository';
 
 // @injectable()
 export default class DeleteTransactionService {
     // private deleteTransactionRepository: ITransactionsRepository;
+    private deleteTransactionRepository: TransactionRepository;
 
   constructor(
     // @inject('TransactionsRepository')
-    private deleteTransactionRepository: ITransactionsRepository,
+    //private deleteTransactionRepository: ITransactionsRepository,
   ) {
-    // this.deleteTransactionRepository = new TransactionRepository();
+    this.deleteTransactionRepository = new TransactionRepository();
   }
 
   public async execute(id: string): Promise<void> {

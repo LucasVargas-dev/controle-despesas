@@ -49,6 +49,7 @@ const AddTransactionPage = () => {
       description,
       amount,
       type: transactionType,
+      //user_id 
     });
 
     navigate('/home');
