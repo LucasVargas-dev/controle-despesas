@@ -8,8 +8,10 @@ import { initializeDataSource } from './database/ormconfig';
 initializeDataSource();
 const app = express();
 
+const port = process.env.PORT || 3001;
+
 app.use(express.json());
 app.use(cors())
 app.use(routes);
 
-app.listen(3001, () => console.log("Server is running!"));
+app.listen(port, () => console.log("Server is running!"));
