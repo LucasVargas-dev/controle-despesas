@@ -2,10 +2,10 @@
 pipeline {
     agent none
     stages {
-        agent {
-            docker { image 'nodejs'}
-        }
         stage('Build-back') {
+            agent {
+                docker { image 'nodejs'}
+            }
             steps {
                 sh '''cd back
                 npm install -g yarn
@@ -13,6 +13,9 @@ pipeline {
             }
         }
         stage('Build-front') {
+            agent {
+                docker { image 'nodejs'}
+            }
             steps {
                 sh '''cd frontend
                 npm install -g yarn
