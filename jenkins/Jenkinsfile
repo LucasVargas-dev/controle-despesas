@@ -5,12 +5,14 @@ pipeline {
         stage('Build-back') {
             steps {
                 sh '''cd back
+                yarn install
                 yarn dev'''
             }
         }
         stage('Build-front') {
             steps {
                 sh '''cd frontend
+                yarn install
                 yarn dev'''
             }
         }
