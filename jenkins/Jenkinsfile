@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build-back') {
             agent {
-                docker { image 'nodejs'}
+                docker { image 'nodejs' }
             }
             steps {
                 sh '''cd back
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build-front') {
             agent {
-                docker { image 'nodejs'}
+                docker { image 'nodejs' }
             }
             steps {
                 sh '''cd frontend
