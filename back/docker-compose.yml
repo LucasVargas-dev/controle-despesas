@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+
+  nodejs:
+    container_name: nodejs
+    build: '.'
+    volumes:
+      - .:/home/node/api
+      - /home/node/api/node_modules
+    depends_on:
+      - postgres
+    networks:
+      - app-connect
+    ports:
+      - '3006:3006'
+
+#   postgres:
+#     container_name: postgres
+#     image: postgres
+#     restart: unless-stopped
+#     volumes:
+#       - postgres-data:/var/lib/postgresql/data
+#     environment:
+#       POSTGRES_DB: controle_despesas
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgres
+#     ports:
+#       - '5432:5432'
+#     networks:
+#       - app-connect
+
+# volumes:
+#   postgres-data:
+
+networks:
+  app-connect:
+      driver: bridge
