@@ -3,11 +3,17 @@ pipeline {
     agent none
     stages {
         stage('Build-back') {
+            agent {
+                none
+            }
             steps {
                 sh '''cd back'''
             }
         }
         stage('Build-front') {
+            agent {
+                none
+            }
             steps {
                 sh '''cd frontend'''
             }
