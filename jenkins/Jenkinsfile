@@ -5,7 +5,6 @@ pipeline {
         stage('Build-back') {
             steps {
                 sh '''cd back
-                npm install -g yarn
                 yarn dev'''
             }
         }
