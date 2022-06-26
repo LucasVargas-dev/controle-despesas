@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Build-back') {
             steps {
-                sh 'cd back
-                yarn dev'
+                sh '''cd back
+                yarn dev'''
             }
         }
         stage('Build-front') {
             steps {
-                sh 'cd frontend
-                yarn dev'
+                sh '''cd frontend
+                yarn dev'''
             }
         }
     }
