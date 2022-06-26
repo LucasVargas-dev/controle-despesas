@@ -1,7 +1,12 @@
 #!/usr/bin/env groovy
 pipeline {
     agent any
-    tools {nodejs "nodejs"}
+    withEnv(['C:/Program Files/nodejs/']) {
+        stage('Prepare') {
+        sh "npm install -g yarn"
+        sh "yarn install"
+        }
+    }
     stages {
         stage('Build-back') {
             steps {
