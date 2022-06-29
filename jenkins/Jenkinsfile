@@ -7,21 +7,15 @@ pipeline {
                 docker { image 'nodejs' }
             }
             steps {
-                sh '''cd back
-                '''
+                sh '''cd back'''
             }
-            // npm install -g yarn
-               //  yarn dev
         }
         stage('Build-front') {
             agent {
                 docker { image 'nodejs' }
             }
             steps {
-                sh '''cd frontend
-                '''
-            //npm install -g yarn
-                //yarn dev
+                sh '''cd frontend'''
         }
     }
 }
