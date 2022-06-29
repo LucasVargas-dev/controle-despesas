@@ -8,9 +8,10 @@ pipeline {
             }
             steps {
                 sh '''cd back
-                npm install -g yarn
-                yarn dev'''
+                '''
             }
+            // npm install -g yarn
+               //  yarn dev
         }
         stage('Build-front') {
             agent {
@@ -18,9 +19,9 @@ pipeline {
             }
             steps {
                 sh '''cd frontend
-                npm install -g yarn
-                yarn dev'''
-            }
+                '''
+            //npm install -g yarn
+                //yarn dev
         }
     }
 }
