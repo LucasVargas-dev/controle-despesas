@@ -1,11 +1,11 @@
 #!/usr/bin/env groovy
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Build-back') {
-            agent {
-                docker { image 'nodejs' }
-            }
+            // agent {
+            //     docker { image 'nodejs' }
+            // }
             steps {
                 sh '''cd back
                 npm install -g yarn
@@ -13,9 +13,9 @@ pipeline {
             }
         }
         stage('Build-front') {
-            agent {
-                docker { image 'nodejs' }
-            }
+            // agent {
+            //     docker { image 'nodejs' }
+            // }
             steps {
                 sh '''cd frontend
                 npm install -g yarn
